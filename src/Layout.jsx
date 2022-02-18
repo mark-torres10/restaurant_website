@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
   return (
     <>
         <Head>This is the head</Head>
-        <Box maxWidth="1600px" m="auto">
+        <Box m="auto">
             <header>
                 <Navbar />
             </header>
