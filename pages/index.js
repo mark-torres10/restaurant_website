@@ -31,6 +31,11 @@ export default function Home() {
           <SliderGallery imgs_list={upperFoodImages}/>
           <Text>Put text here</Text>
           <SliderGallery imgs_list={lowerFoodImages}/>
+          <Text>Read what our customers have to say! </Text>
+          {/* TODO(mark): show reviews. 
+            Use a carousel for the posts?
+            Or have them fade in like a wordcloud?
+          */}
           <LatestSocialUpdates/>
         </Box>
       </main>

@@ -1,7 +1,7 @@
-import React from 'react'
-import { useState } from 'react';
+import Link from "next/link";
+import React, { useState } from 'react'
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
-import { Avatar, Box, Button, Flex, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { Avatar, Button, Flex, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 
 import NavbarItem from "./NavbarItem";
 
@@ -9,7 +9,6 @@ const SAMPLE_LOGO_PATH  = "https://foodtruckempire.com/wp-content/uploads/The-be
 const SAMPLE_RESTAURANT_NAME = "saganaki" // TODO(mark): temporary name, unsure if this is the correct name?
 
 const Navbar = () => {
-
     const [showMenu, setShowMenu] = useState(false);
 
     const updateMenuToggle = () => {
@@ -18,16 +17,27 @@ const Navbar = () => {
         return icon
     }
 
+    const menuItemPathList = [
+        {"item": "Breakfast", "path": "/breakfast"},
+        {"item": "Lunch", "path": "/lunch"},
+        {"item": "Dinner", "path": "/dinner"},
+        {"item": "Drinks", "path": "/drinks"},
+        {"item": "Specials", "path": "/specials"},
+        {"item": "Sunday Buffet", "path": "/sunday-buffet"}
+    ]
+
     return (
         <Flex
             as="header"
             bg="gray.100"
             position="fixed"
+            top="0"
             w="100%"
             paddingTop="5"
             paddingBottom="5"
             paddingLeft="20"
         >
+            {/* TODO(mark): fix overlay of navbar on top of page */}
             {/* TODO(mark): put logo here. */}
             {/* TODO(mark): add toggle to display navbar items, for mobile + tablet devices: https://raptis.wtf/blog/create-a-navbar-with-chakra-ui-react/*/}
             <Avatar size='2xl' name={ SAMPLE_RESTAURANT_NAME } src={ SAMPLE_LOGO_PATH } />
@@ -42,17 +52,16 @@ const Navbar = () => {
                     Menus
                 </MenuButton>
                 <MenuList>
-                    <MenuItem href='/breakfast'>Breakfast</MenuItem>
-                    <MenuItem href='/lunch'>Lunch</MenuItem>
-                    <MenuItem href='/dinner'>Dinner</MenuItem>
-                    <MenuItem href='/drinks'>Drinks</MenuItem>
-                    <MenuItem href='/specials'>Specials</MenuItem>
-                    <MenuItem href='/buffet'>Sunday Buffet</MenuItem>
+                    {menuItemPathList.map((menuItem) => (
+                        <Link href={menuItem.path} passHref key={menuItem.path}>
+                            <MenuItem>{menuItem.item}</MenuItem>
+                        </Link>
+                    ))}
                 </MenuList>
             </Menu>
             <NavbarItem itemName="About Us" to_path="/"/>
             <NavbarItem itemName="Catering" to_path="/"/>
-            <NavbarItem itemName="Contact Us" to_path="/"/>
+            <NavbarItem itemName="Contact Us" to_path="/contact-us"/>
             <NavbarItem itemName="Media" to_path="/"/>
             <NavbarItem itemName="Join Us!" to_path="/"/>
 

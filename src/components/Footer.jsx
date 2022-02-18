@@ -8,10 +8,14 @@ import SocialLinks from "./SocialLinks";
 
 const Footer = () => {
   return (
-    <Box textAlign="center" alignItems="center" justifyContent="center">
-        <Flex>
-
-        </Flex>
+    <Box
+      borderTop="1px solid grey"
+      marginTop="10px"
+      textAlign="center"
+      alignItems="center"
+      justifyContent="center"
+    >
+        <Spacer height="25px"/>
         <NewsletterSignup/>
         <Flex justifyContent="center" paddingTop="4" paddingBottom="10">
           <Box paddingRight="20">
